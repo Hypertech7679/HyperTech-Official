@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Advanced Nmap Website">
+    <meta name="keywords" content="Nmap, Network Security, Network Scanner, Penetration Testing">
+    <meta name="author" content="Your Name">
+    <title>Advanced Nmap - Network Scanning</title>
+    <link rel="stylesheet" href="3.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        nav {
+            text-align: center;
+            background-color: #444;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+        }
+
+        nav a:hover {
+            color: #ddd;
+        }
+
+        section {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2em;
+            color: #333;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            flex-basis: 30%;
+            text-align: center;
+            margin: 20px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature i {
+            font-size: 3em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .tutorial, .download {
+            text-align: center;
+            margin: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .step-by-step {
+            margin-top: 20px;
+        }
+
+        .step-by-step ol {
+            list-style-type: decimal;
+            margin-left: 20px;
+        }
+
+        .step-by-step ol li {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Nmap Step-by-Step Guide</h1>
+    </header>
+
+    <nav>
+        <a href="#about">About Nmap</a>
+        <a href="#features">Features</a>
+        <a href="#tutorial">Tutorial</a>
+        <a href="#download">Download</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="about">
+        <h2>About Nmap</h2>
+        <p>Nmap (Network Mapper) is a powerful open-source tool used for network discovery and security auditing. It is widely used by security professionals and system administrators to map networks and discover open ports, services, and vulnerabilities. Below is a step-by-step guide to help you set up Nmap and run a basic scan on your network.</p>
+        
+        <div class="step-by-step">
+            <h3>Step-by-Step Guide: Nmap Setup & Basic Scanning</h3>
+            <ol>
+                <li><strong>Install Nmap:</strong>
+                    <ul>
+                        <li><strong>For Linux:</strong> Open a terminal and run the command: <code>sudo apt install nmap</code>.</li>
+                        <li><strong>For Windows:</strong> Download the Windows installer from the official Nmap site <a href="https://nmap.org/download.html" target="_blank">here</a>.</li>
+                        <li><strong>For macOS:</strong> Use Homebrew to install Nmap by running: <code>brew install nmap</code>.</li>
+                    </ul>
+                </li>
+                
+                <li><strong>Verify Installation:</strong> 
+                    <p>Open a terminal (or Command Prompt on Windows) and type <code>nmap --version</code>. If Nmap is correctly installed, it will display the version and license information.</p>
+                </li>
+                
+                <li><strong>Basic Network Scan:</strong> 
+                    <p>To scan your local network or a specific IP address, run the following command in the terminal:</p>
+                    <pre><code>nmap 192.168.1.1</code></pre>
+                    <p>Replace <code>192.168.1.1</code> with the IP address of the target you want to scan.</p>
+                </li>
+
+                <li><strong>Scanning for Open Ports:</strong> 
+                    <p>To detect open ports on a target, use this command:</p>
+                    <pre><code>nmap -p 1-65535 192.168.1.1</code></pre>
+                    <p>This will scan all 65535 TCP ports on the target system. You can limit the scan to common ports by omitting the range.</p>
+                </li>
+
+                <li><strong>Scan Multiple Targets:</strong> 
+                    <p>To scan multiple IP addresses or ranges, use the following command:</p>
+                    <pre><code>nmap 192.168.1.1 192.168.1.2 192.168.1.0/24</code></pre>
+                    <p>This will scan the two specified IP addresses and the entire <code>192.168.1.0/24</code> subnet.</p>
+                </li>
+
+                <li><strong>Advanced Scan (Service Detection):</strong> 
+                    <p>If you want to identify running services on open ports, use:</p>
+                    <pre><code>nmap -sV 192.168.1.1</code></pre>
+                    <p>This will probe each open port and attempt to identify the running service and version.</p>
+                </li>
+
+                <li><strong>Save Scan Results:</strong> 
+                    <p>To save scan results to a file, use the <code>-oN</code> option:</p>
+                    <pre><code>nmap -oN scan_results.txt 192.168.1.1</code></pre>
+                    <p>This will save the output to a text file named <code>scan_results.txt</code>.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section id="features">
+        <h2>Advanced Features</h2>
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-network-wired"></i>
+                <h3>Network Discovery</h3>
+                <p>Scan networks and discover active hosts, open ports, and services.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Security Auditing</h3>
+                <p>Detect vulnerabilities and misconfigurations across your network infrastructure.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-code"></i>
+                <h3>Customizable Scans</h3>
+                <p>Tailor scans to your specific needs with advanced flags and options.</p>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <section id="download" class="download">
+        <h2>Download Nmap</h2>
+        <p>Click the button below to download the latest version of Nmap.</p>
+        <a href="https://nmap.org/download.html" target="_blank">
+            <button style="padding: 10px 20px; font-size: 1.2em; background-color: #333; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                Download Now
+            </button>
+        </a>
+    </section>
+
+    <footer id="contact">
+        <p>Contact Us | Privacy Policy | © 2024 Advanced Nmap</p>
+    </footer>
+
+</body>
+
+</html>

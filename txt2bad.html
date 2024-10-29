@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Binary/Decimal Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .converter-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="converter-container">
+        <h1>Text to Binary/Decimal</h1>
+        <label for="inputText">Enter Text:</label>
+        <textarea id="inputText" placeholder="Type your text here..."></textarea>
+        
+        <button onclick="convertToBinary()">Convert to Binary</button>
+        <button onclick="convertToDecimal()">Convert to Decimal</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function convertToBinary() {
+            const text = document.getElementById('inputText').value;
+            let binaryResult = '';
+            for (let i = 0; i < text.length; i++) {
+                binaryResult += text.charCodeAt(i).toString(2).padStart(8, '0') + ' ';
+            }
+            document.getElementById('result').textContent = 'Binary: ' + binaryResult.trim();
+        }
+
+        function convertToDecimal() {
+            const text = document.getElementById('inputText').value;
+            let decimalResult = '';
+            for (let i = 0; i < text.length; i++) {
+                decimalResult += text.charCodeAt(i) + ' ';
+            }
+            document.getElementById('result').textContent = 'Decimal: ' + decimalResult.trim();
+        }
+    </script>
+
+</body>
+</html>

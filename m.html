@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="E:\hypertech\css\bootstrap.min.css">
+ 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+.menu {
+  float: left;
+  width: 20%;
+}
+.menuitem {
+  padding: 8px;
+  margin-top: 7px;
+  border-bottom: 1px solid #f1f1f1;
+}
+.main {
+  float: left;
+  width: 60%;
+  padding: 0 20px;
+  overflow: hidden;
+}
+.right {
+  background-color: lightblue;
+  float: left;
+  width: 20%;
+  padding: 10px 15px;
+  margin-top: 7px;
+}
+
+@media only screen and (max-width:800px) {
+  /* For tablets: */
+  .main {
+    width: 80%;
+    padding: 0;
+  }
+  .right {
+    width: 100%;
+  }
+}
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
+}
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyperTech Official Website</title>
+	<link rel="icon" type="image/x-icon" href="l.ico">
+	
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background: #f4f4f4;
+            padding-bottom: 80px; /* Ensure space for the footer */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            background: #34495e;
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .tabcontent {
+            display: none;
+            padding: 60px 20px 20px; /* Added top padding to account for fixed header */
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .tabcontent.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tabcontent img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .tabcontent img:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .tabcontent h1, .tabcontent h2 {
+            color: #2c3e50;
+            margin: 20px 0;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(100%);
+        }
+
+        footer.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        form:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        form label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        form input, form textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s ease;
+        }
+
+        form input:focus, form textarea:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        form button {
+            padding: 10px;
+            font-size: 16px;
+            background: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        form button:hover {
+            background: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .theme-toggle, .voice-toggle {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            padding: 10px 15px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .theme-toggle:hover, .voice-toggle:hover {
+            background: #2980b9;
+            transform: scale(1.1);
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background: #181818;
+            color: #eaeaea;
+        }
+
+        header.dark-mode {
+            background: #1c1c1c;
+            color: #eaeaea;
+        }
+
+        footer.dark-mode {
+            background: #1c1c1c;
+            color: #eaeaea;
+        }
+
+        .tabcontent.dark-mode {
+            color: #eaeaea;
+            background: #282828;
+        }
+
+        .tabcontent img {
+            filter: brightness(0.9);
+        }
+
+        form {
+            background: #333;
+        }
+
+        form input, form textarea {
+            background: #444;
+            color: #eaeaea;
+            border: 1px solid #555;
+        }
+
+        form button {
+            background: #3498db;
+            color: #fff;
+        }
+    </style>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Space between buttons */
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 16px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none; /* Remove underline */
+            text-align: center; /* Center the text */
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            background-color: #007bff;
+        }
+
+        
+        /* Hover Effects */
+        .button:hover {
+            transform: scale(1.1); /* Scale effect */
+        }
+
+        /* Adding a ripple effect */
+        .button:after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.7);
+            width: 300%;
+            height: 300%;
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.5s, opacity 0.5s;
+            opacity: 0;
+        }
+
+        .button:active:after {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            transition: 0s;
+        }
+    </style>
+	
+</head>
+
+<body onload="myFunction()" style="margin:0;">
+
+<div id="loader"></div>
+
+<div style="display:none;" id="myDiv" class="animate-bottom">
+  
+ 
+
+    <header>
+        
+       <center> <button class="voice-toggle" onclick="toggleVoice()">L.<br><br>Voice<br>Commands</button>
+		<button class="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
+        <nav>
+            <ul>
+                
+				<li><a href="#home" onclick="openTab(event, 'home')">Home</a></li>
+                <li><a href="#services" onclick="openTab(event, 'services')">Services</a></li>
+                <li><a href="#about" onclick="openTab(event, 'about')">About</a></li>
+                <li><a href="#contact" onclick="openTab(event, 'contact')">Contact</a></li>
+				
+            </ul>
+        </nav>
+		<div class="time-container">
+        
+        <p id="currentDateTime"></p>
+    </div>
+
+    <div class="time-container">
+	 </div>
+
+    <script>
+        // Function to update current date and time
+        function updateDateTime() {
+            var now = new Date();
+            var dateTimeString = now.toLocaleString(); // Get current date and time as a string
+            document.getElementById("currentDateTime").innerHTML = dateTimeString;
+        }
+
+        // Function to start countdown
+        function startCountdown() {
+            var eventDate = new Date("December 31, 2024 00:00:00").getTime(); // Set event date here
+
+            // Update the countdown every second
+            var countdownInterval = setInterval(function () {
+                var now = new Date().getTime(); // Get current time
+                var timeLeft = eventDate - now;  // Time difference
+
+                // Calculate time components (days, hours, minutes, seconds)
+                var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                // Display the result
+                document.getElementById("countdownTimer").innerHTML = 
+                    days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+                // If the countdown is over, display a message
+                if (timeLeft < 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById("countdownTimer").innerHTML = "EXPIRED";
+                }
+            }, 1000); // Update every 1 second
+        }
+
+        // Call the functions to display real-time and countdown
+        setInterval(updateDateTime, 1000); // Update date and time every second
+        startCountdown(); // Start the countdown
+    </script>
+    </header>
+	
+    <main>
+        <div id="home" class="tabcontent">
+            <h1>Welcome to HyperTech</h1>
+            <p>Your tech solutions provider.</p>
+            <img src="l.png" alt="Welcome Image">
+			
+        </div>
+
+        <div id="services" class="tabcontent">
+            <h2>Our Services</h2>
+            <p>We offer a range of tech services to meet your needs.</p>
+            <img src="s.png" alt="Services Image">
+			 <div class="button-container">
+        <a href="7.html" class="button btn-primary">Hyper Cyber Team</a>
+		 <a href="hr.html" class="button btn-primary">Real-Time HTML Runner</a>
+		  <a href="binary to img,txt.html" class="button btn-primary">Binary to Image/TXT Converter</a>
+		   <a href="c.html" class="button btn-primary">Calculater</a>
+		    <a href="txt2bad.html" class="button btn-primary">Text to Binary/Decimal</a>
+        </div>
+		      
+
+        <div id="about" class="tabcontent">
+            <h2>About Us</h2>
+            <p>Learn more about our team and our mission.</p>
+            <img src="a.png" alt="About Us Image">
+			<p><i><b>We are giving tech solutions,update etc.</b></i></p>
+			 
+			<p><i>Joined in 2024:09:14</p></i>
+        </div>
+
+        <div id="contact" class="tabcontent">
+            <h2>Contact Us</h2>
+			<h6>notice;This is not working tempory</h6>
+             <form action="send_email.php" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" required></textarea><br>
+        <input type="submit" value="Send"></div>
+    </form>
+	 
+               
+            <div id="formResponse">
+        </div>
+		
+   
+		
+			
+	
+		
+		
+   
+    </main>
+
+    
+
+    <script>
+        function openTab(event, tabName) {
+            let i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove('active');
+            }
+            tablinks = document.querySelectorAll("nav ul li a");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove('active');
+            }
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector('nav ul li a').click();
+        });
+
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            document.getElementById("formResponse").innerText = "Thank you for your message!";
+        });
+
+        window.addEventListener('scroll', function() {
+            const footer = document.querySelector('footer');
+            if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 50) {
+                footer.classList.add('show');
+            } else {
+                footer.classList.remove('show');
+            }
+        });
+
+        function toggleTheme() {
+            const body = document.body;
+            const header = document.querySelector('header');
+            const footer = document.querySelector('footer');
+            const tabcontents = document.querySelectorAll('.tabcontent');
+            const isDarkMode = body.classList.toggle('dark-mode');
+            header.classList.toggle('dark-mode', isDarkMode);
+            footer.classList.toggle('dark-mode', isDarkMode);
+            tabcontents.forEach(tc => tc.classList.toggle('dark-mode', isDarkMode));
+            document.querySelector('.theme-toggle').textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+        }
+
+        function toggleVoice() {
+            const recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!recognition) {
+                alert('Speech Recognition not supported in this browser.');
+                return;
+            }
+
+            const voice = new recognition();
+            voice.lang = 'en-US';
+            voice.interimResults = false;
+            voice.maxAlternatives = 1;
+
+            voice.onresult = function(event) {
+                const command = event.results[0][0].transcript.toLowerCase();
+                handleVoiceCommand(command);
+            };
+
+            voice.onend = function() {
+                voice.start(); // Restart listening after command
+            };
+
+            voice.start();
+        }
+
+        function handleVoiceCommand(command) {
+            const homeLink = document.querySelector('a[href="#home"]');
+            const servicesLink = document.querySelector('a[href="#services"]');
+            const aboutLink = document.querySelector('a[href="#about"]');
+            const contactLink = document.querySelector('a[href="#contact"]');
+
+            if (command.includes('home')) {
+                homeLink.click();
+            } else if (command.includes('services')) {
+                servicesLink.click();
+            } else if (command.includes('about')) {
+                aboutLink.click();
+            } else if (command.includes('contact')) {
+                contactLink.click();
+            } else if (command.includes('dark mode')) {
+                toggleTheme();
+            } else {
+                alert('Sorry, I did not understand that command.');
+            }
+        }
+    </script>
+	
+
+	 <p>&copy; 2024 HyperTech . All rights reserved.</p>
+	 </div>
+
+<script>
+var myVar;
+
+function myFunction() {
+  myVar = setTimeout(showPage, 3000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+</script>
+<script>
+    // Action log array to store user actions
+    let actionLog = [];
+
+    // Function to log actions
+    function logAction(action) {
+        const timestamp = new Date().toLocaleString();
+        actionLog.push(`${timestamp}: ${action}`);
+    }
+
+    // Example of logging actions on different events
+    document.addEventListener('DOMContentLoaded', () => {
+        logAction('Page Loaded');
+        
+        // Logging navigation clicks
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                logAction(`Navigated to ${link.textContent}`);
+            });
+        });
+
+        // Logging form submissions
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                logAction('Form submitted with Name: ' + form.name.value + ' Email: ' + form.email.value);
+            });
+        }
+    });
+
+    // Function to download the action log as a text file
+    function downloadLog() {
+        const blob = new Blob([actionLog.join('\n')], { type: 'text/plain' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'user_action_log.txt';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    // You can trigger the download at any point, e.g., when user clicks a button
+    function addDownloadButton() {
+        const button = document.createElement('button');
+        button.textContent = "Download Log";
+        button.onclick = downloadLog;
+        document.body.appendChild(button);
+    }
+
+    // Call this function when you're ready to offer the log download
+    addDownloadButton();
+</script>
+ <!-- Bootstrap JS -->
+<script src="E:\hypertech\js\bootstrap.bundle.min.js"></script>
+</body>
+</html>

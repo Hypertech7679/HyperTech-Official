@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Install Kali Linux on Windows">
+    <meta name="keywords" content="Kali Linux, Windows, WSL, Virtual Machine, Installation Guide">
+    <meta name="author" content="Your Name">
+    <title>Install Kali Linux on Windows - Step-by-Step Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        nav {
+            text-align: center;
+            background-color: #444;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+        }
+
+        nav a:hover {
+            color: #ddd;
+        }
+
+        section {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2em;
+            color: #333;
+        }
+
+        .step-by-step {
+            margin-top: 20px;
+        }
+
+        .step-by-step ol {
+            list-style-type: decimal;
+            margin-left: 20px;
+        }
+
+        .step-by-step ol li {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .info {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-left: 4px solid #333;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Install Kali Linux on Windows</h1>
+    </header>
+
+    <nav>
+        <a href="#wsl">Install with WSL</a>
+        <a href="#vm">Install with Virtual Machine</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="wsl">
+        <h2>Installing Kali Linux Using WSL (Windows Subsystem for Linux)</h2>
+        <div class="step-by-step">
+            <h3>Step-by-Step Guide</h3>
+            <ol>
+                <li><strong>Enable WSL on Windows:</strong>
+                    <p>Open PowerShell as Administrator and run the following command:</p>
+                    <pre><code>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</code></pre>
+                    <p>Next, run this command to enable Virtual Machine Platform:</p>
+                    <pre><code>dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart</code></pre>
+                </li>
+
+                <li><strong>Restart Your Computer:</strong>
+                    <p>Once the features are enabled, restart your computer to apply the changes.</p>
+                </li>
+
+                <li><strong>Install Kali Linux from Microsoft Store:</strong>
+                    <p>Go to the <a href="https://aka.ms/wslstore" target="_blank">Microsoft Store</a> and search for "Kali Linux". Click on the <strong>Install</strong> button.</p>
+                </li>
+
+                <li><strong>Set Up Kali Linux:</strong>
+                    <p>Once installed, open Kali Linux from the Start Menu. Set your username and password when prompted.</p>
+                </li>
+
+                <li><strong>Update and Upgrade Kali Linux:</strong>
+                    <p>After the setup, update and upgrade Kali Linux by running the following commands:</p>
+                    <pre><code>sudo apt update && sudo apt upgrade -y</code></pre>
+                </li>
+
+                <li><strong>Start Using Kali Linux on Windows:</strong>
+                    <p>You are now ready to use Kali Linux on Windows via WSL!</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section id="vm">
+        <h2>Installing Kali Linux Using Virtual Machine (VM)</h2>
+        <div class="step-by-step">
+            <h3>Step-by-Step Guide</h3>
+            <ol>
+                <li><strong>Download Virtualization Software:</strong>
+                    <p>Download and install either <a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a> or <a href="https://www.vmware.com/products/workstation-player.html" target="_blank">VMware Workstation Player</a>.</p>
+                </li>
+
+                <li><strong>Download Kali Linux ISO:</strong>
+                    <p>Go to the <a href="https://www.kali.org/get-kali/" target="_blank">Kali Linux website</a> and download the Kali Linux ISO file.</p>
+                </li>
+
+                <li><strong>Create a New Virtual Machine:</strong>
+                    <p>Open the virtualization software (VirtualBox or VMware) and create a new virtual machine.</p>
+                    <p>Select the downloaded Kali Linux ISO file as the boot image and follow the instructions to set up the VM.</p>
+                </li>
+
+                <li><strong>Set VM Specifications:</strong>
+                    <p>Allocate sufficient memory (at least 2GB RAM) and storage (at least 20GB) for the VM to run smoothly.</p>
+                </li>
+
+                <li><strong>Install Kali Linux on VM:</strong>
+                    <p>Once the VM boots from the ISO, follow the installation steps to install Kali Linux.</p>
+                </li>
+
+                <li><strong>Start Using Kali Linux:</strong>
+                    <p>After installation is complete, launch the VM to start using Kali Linux on Windows.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section id="faq">
+        <h2>FAQ</h2>
+        <div class="info">
+            <strong>Q:</strong> What is the difference between installing Kali Linux via WSL and using a Virtual Machine?<br>
+            <strong>A:</strong> WSL allows you to run Kali Linux directly on Windows without a VM. It’s lightweight and easy to set up, but some hardware-dependent tools may not work. Using a VM gives you a full-featured installation but requires more system resources.
+        </div>
+
+        <div class="info">
+            <strong>Q:</strong> Can I dual boot Kali Linux with Windows?<br>
+            <strong>A:</strong> Yes, you can. However, it's more complex than using WSL or a VM and requires partitioning your hard drive. It's recommended only for advanced users.
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p>Contact Us | Privacy Policy | © 2024 Install Kali Linux Guide</p>
+    </footer>
+
+</body>
+
+</html>

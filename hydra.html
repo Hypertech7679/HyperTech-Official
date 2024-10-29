@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydra Setup Guide for Windows</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            margin: 10px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            color: #fff;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        ol {
+            padding-left: 20px;
+        }
+        .step {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            background: #e9ecef;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #333;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Hydra Setup Guide for Windows</h1>
+        <nav>
+            <a href="#requirements">Requirements</a>
+            <a href="#installation">Installation</a>
+            <a href="#usage">Usage</a>
+            <a href="#tips">Tips</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="requirements">
+            <h2>Requirements</h2>
+            <div class="step">
+                <ol>
+                    <li>Windows Operating System (10/11 recommended)</li>
+                    <li>Visual Studio or MinGW installed</li>
+                    <li>Administrator access to install software</li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="installation">
+            <h2>Installation Steps</h2>
+            <div class="step">
+                <ol>
+                    <li>
+                        <strong>Download Hydra:</strong>
+                        <br>
+                        Visit the <a href="https://github.com/vanhauser-thc/thc-hydra" target="_blank">official Hydra GitHub page</a> and download the latest release.
+                    </li>
+                    <li>
+                        <strong>Extract the Files:</strong>
+                        <br>
+                        Use a tool like 7-Zip to extract the downloaded zip file.
+                    </li>
+                    <li>
+                        <strong>Open Command Prompt:</strong>
+                        <br>
+                        Press <code>Win + R</code>, type <code>cmd</code>, and hit Enter.
+                    </li>
+                    <li>
+                        <strong>Navigate to Hydra Folder:</strong>
+                        <br>
+                        Use the command <code>cd path\to\extracted\hydra\folder</code> to go to the Hydra folder.
+                    </li>
+                    <li>
+                        <strong>Compile Hydra:</strong>
+                        <br>
+                        Run <code>make</code> or <code>make win32</code> (if using MinGW) to compile Hydra.
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="usage">
+            <h2>Using Hydra</h2>
+            <div class="step">
+                <ol>
+                    <li>
+                        <strong>Basic Command Syntax:</strong>
+                        <br>
+                        The general syntax for Hydra is:
+                        <pre><code>hydra -l <username> -P <password_file> <protocol>://<target></code></pre>
+                    </li>
+                    <li>
+                        <strong>Choose a Protocol:</strong>
+                        <br>
+                        Determine the service you want to test (e.g., ssh, ftp, http).
+                    </li>
+                    <li>
+                        <strong>Prepare Password List:</strong>
+                        <br>
+                        Create or download a password list file (e.g., <code>passlist.txt</code>).
+                    </li>
+                    <li>
+                        <strong>Example Command for SSH:</strong>
+                        <br>
+                        To perform a login brute-force on SSH:
+                        <pre><code>hydra -l admin -P passlist.txt ssh://192.168.1.1</code></pre>
+                    </li>
+                    <li>
+                        <strong>Example Command for FTP:</strong>
+                        <br>
+                        For FTP login attempts:
+                        <pre><code>hydra -l user -P passlist.txt ftp://192.168.1.1</code></pre>
+                    </li>
+                    <li>
+                        <strong>Using Multiple Usernames:</strong>
+                        <br>
+                        If you have a file with multiple usernames:
+                        <pre><code>hydra -L users.txt -P passlist.txt ssh://192.168.1.1</code></pre>
+                    </li>
+                    <li>
+                        <strong>Output Results:</strong>
+                        <br>
+                        Use the <code>-o</code> flag to save the results to a file:
+                        <pre><code>hydra -l admin -P passlist.txt -o results.txt ssh://192.168.1.1</code></pre>
+                    </li>
+                    <li>
+                        <strong>View Help:</strong>
+                        <br>
+                        If you need more options or help, run:
+                        <pre><code>hydra -h</code></pre>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="tips">
+            <h2>Tips for Effective Use</h2>
+            <div class="step">
+                <ul>
+                    <li>Always have permission before running tests on a network.</li>
+                    <li>Use strong and varied password lists for better results.</li>
+                    <li>Consider using a VPN to maintain privacy while testing.</li>
+                    <li>Check firewall settings that may block your requests.</li>
+                    <li>Take breaks and monitor your actions to avoid detection.</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Hydra Setup Guide</p>
+    </footer>
+
+</body>
+</html>
